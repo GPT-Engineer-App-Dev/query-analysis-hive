@@ -1,13 +1,16 @@
 import { Container, VStack, Input, InputGroup, InputLeftElement, IconButton } from "@chakra-ui/react";
 import { FaSearch } from "react-icons/fa";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom"; // Import useNavigate
 
 const Index = () => {
   const [query, setQuery] = useState("");
+  const navigate = useNavigate(); // Initialize useNavigate
 
   const handleSearch = () => {
-    console.log("Search query:", query);
-    // Implement search functionality here
+    if (query.trim()) {
+      navigate(`/articles?query=${query}`); // Navigate to the MainContent page with the query
+    }
   };
 
   return (
